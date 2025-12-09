@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Montserrat Castaño — Viajes</title>
+  <link rel="icon" type="image/png" href="logoincruises.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --orange:#ff7a00;
+      --blue:#003b70;
+      --white:#ffffff;
+      --muted:#f5f7fa;
+      --text:#052a3b;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color:var(--text);
+      background:var(--white);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.45;
+      overflow-x:hidden;
+    }
+
+    /* ======================= */
+    /* ANIMACIONES DINÁMICAS    */
+    /* ======================= */
+
+    .reveal {
+      opacity:0;
+      transform:translateY(30px);
+      transition: all 0.9s cubic-bezier(.17,.67,.83,.67);
+    }
+
+    .reveal.visible {
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .reveal.slide-right {
+      transform:translateX(-40px);
+    }
+    .reveal.slide-right.visible {
+      transform:translateX(0);
+    }
+
+    .reveal.slide-left {
+      transform:translateX(40px);
+    }
+    .reveal.slide-left.visible {
+      transform:translateX(0);
+    }
+
+    /* ========================= */
+
+    header.site-header{
+      background:linear-gradient(90deg,var(--orange), #ff9a3a);
+      color:var(--white);
+    }
+
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      border-radius:8px;
+      background:var(--white);
+      padding:6px;
+      transition:0.3s;
+    }
+    .brand img:hover{ transform:scale(1.06); }
+
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px}
+    nav a{
+      color:var(--white);
+      text-decoration:none;
+      font-weight:600;
+      position:relative;
+      transition:0.3s;
+    }
+    nav a:hover{ opacity:0.7; }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:28px;
+      align-items:center;
+      padding:48px 0;
+      text-align:center;
+      background:var(--blue);
+      color:var(--white);
+    }
+
+    .hero .lead{
+      font-size:28px;
+      margin:0;
+      font-weight:600;
+    }
+
+    .hero img{ transition:0.5s; }
+    .hero img:hover{ transform:scale(1.03); }
+
+    .cta{
+      display:inline-flex;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .btn--white{ background:var(--white); color:var(--blue); }
+    .btn--white:hover{ background:#e8ecf1; }
+
+    .btn--orange{ background:var(--orange); color:var(--white); }
+    .btn--orange:hover{ background:#ff9933; }
+
+    section{padding:44px 0}
+    h2{margin:0 0 12px;font-size:22px;color:var(--blue)}
+
+    /* SOBRE MÍ ––– AQUÍ ESTÁ EL CAMBIO */
+    .about{
+      display:flex;
+      gap:24px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .about img{
+      width:260px;
+      height:350px;
+      object-fit:cover;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+      transition:0.4s;
+    }
+    .bio{
+      max-width:600px;
+    }
+    .about img:hover{ transform:scale(1.03); }
+
+    /* TESTIMONIOS */
+    .testimonials{
+      background:linear-gradient(180deg,var(--muted),#fff);
+      padding:36px;
+      border-radius:12px;
+    }
+
+    .test-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px;
+    }
+
+    .testimonial{
+      background:var(--white);
+      padding:18px;
+      border-radius:10px;
+      box-shadow:0 6px 18px rgba(6,22,34,0.06);
+      border-left:6px solid var(--orange);
+      transition:0.3s;
+    }
+    .testimonial:hover{
+      transform:translateY(-4px);
+      box-shadow:0 10px 26px rgba(6,22,34,0.15);
+    }
+
+    /* CONTACTO */
+    .contact-card{
+      background:var(--blue);
+      color:var(--white);
+      padding:26px;
+      border-radius:12px;
+      text-align:center;
+    }
+
+    footer{
+      padding:22px 0;
+      background:linear-gradient(90deg,var(--orange),#ff9a3a);
+      color:var(--white);
+      text-align:center;
+      margin-top:50px;
+    }
+
+    @media(min-width:800px){
+      .hero{
+        grid-template-columns:1fr 420px;
+        text-align:left;
+        padding:72px 0;
+      }
+      .hero .lead{font-size:34px}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header reveal slide-right">
+  <div class="container topbar reveal slide-left">
+    <div class="brand">
+      <img src="fotohead.png" alt="Foto de Montserrat Castaño" />
+      <div>
+        <h1>Montserrat Castaño</h1>
+        <div style="font-size:13px;opacity:0.95">Viajes · Acompañamiento · Comunidad</div>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="hero reveal">
+    <div class="container">
+      <div style="max-width:640px">
+        <div class="lead reveal">Viajar te hace feliz. <br> Yo te ayudo a hacerlo realidad.</div>
+
+        <p class="lead-muted reveal slide-right" style="font-size:18px; font-weight:500; opacity:0.95;">
+          Descubre cómo viajo y cómo tú también puedes disfrutar de experiencias únicas, mucho más económicas gracias a este modelo de negocio.
+        </p>
+
+        <div class="cta reveal slide-left">
+          <a class="btn btn--white" href="#contacto">Contactar con Montserrat</a>
+          <a class="btn btn--orange" href="#testimonios">Ver testimonios</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:18px 0;text-align:center" class="reveal">
+      <img src="fotomedio.png" alt="Foto de Montserrat Castaño"
+           style="width:320px;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.18)">
+      <div style="font-size:13px;margin-top:8px;opacity:0.9">Montserrat Castaño</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- SOBRE MÍ – FOTO A LA IZQUIERDA, TEXTO A LA DERECHA -->
+  <section id="sobre-mi" class="container reveal" style="margin-top:80px">
+    <h2>Sobre mí</h2>
+    <div class="about" style="margin-top:14px">
+      <div class="photo reveal slide-right">
+        <img src="fototexto.png" alt="Foto de Montserrat Castaño">
+      </div>
+      <div class="bio reveal slide-left">
+        <p>¡Hola! Soy <strong>Montserrat Castaño</strong>. Apasionada por viajar, descubrir nuevos destinos y compartir experiencias únicas. <br><br>
+        Mi misión es ayudarte a viajar más, mejor y ahorrando, mientras te muestro cómo convertir tus viajes en oportunidades para emprender. <br><br>
+        Si quieres descubrir cómo disfrutar de tus vacaciones soñadas y, al mismo tiempo, generar ingresos recomendando algo que amas, escríbeme. <br><br>
+        Te lo explicaré de forma cercana y sin prisas, paso a paso.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="container reveal" style="margin-top:80px">
+    <h2>Testimonios</h2>
+    <p class="lead-muted reveal slide-right" style="color:#284a60">Historias reales de personas que ya han viajado con mi apoyo.</p>
+
+    <div class="testimonials reveal">
+      <div class="test-list" id="test-list">
+
+        <div class="testimonial reveal slide-left">
+          <p>“Gracias a Montserrat entendí todo súper fácil. Ya hice mi primer crucero y fue inolvidable.”</p>
+          <strong>- Vicente Rodríguez</strong>
+        </div>
+
+        <div class="testimonial reveal slide-right">
+          <p>“Nunca pensé que podría permitirme un crucero. Montserrat me ayudó y ahora ya tengo el siguiente reservado.”</p>
+          <strong>- Cristian</strong>
+        </div>
+
+      </div>
+
+      <div class="carousel-controls" id="dots"></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="container reveal" style="margin-bottom:60px">
+    <h2>Contacto</h2>
+    <div class="contact-card reveal slide-up">
+      <p style="margin:0 0 8px">
+        ¿Quieres que te explique cómo viajar y ayudarte personalmente? <br>
+        Envíame la palabra “CRUCERO” por WhatsApp y te asesoraré paso a paso según tu caso.
+      </p>
+
+      <div class="contact-row" style="margin-top:12px">
+        <a class="btn btn--white" href="mailto:acuarela73@hotmail.com">Enviar email</a>
+        <a class="btn btn--orange" href="https://wa.me/34666419945" target="_blank">Enviar WhatsApp</a>
+      </div>
+
+      <p style="margin-top:12px;font-size:13px;opacity:0.95">
+        Email: <strong>acuarela73@hotmail.com</strong> <br>
+        Solo respondo por WhatsApp: <strong>+34 666 41 99 45</strong>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="reveal">
+  <div class="container">
+    <div style="margin-bottom:6px">© 2025 Montserrat Castaño</div>
+    <div style="font-size:13px;opacity:0.95">
+      Página creada para facilitar el contacto. Yo misma te explicaré personalmente cualquier detalle del servicio.
+  </div>
+</footer>
+
+<script>
+  /* ANIMACIÓN SCROLL REVEAL */
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealElements.forEach(el => observer.observe(el));
+
+
+  /* TESTIMONIOS AUTO */
+  (function(){
+    const list = document.querySelectorAll('#test-list .testimonial');
+    const dots = document.getElementById('dots');
+    let idx = 0;
+    function renderDots(){
+      dots.innerHTML = '';
+      list.forEach((_,i)=>{
+        const d = document.createElement('div');
+        d.className='dot'+(i===idx?' active':'');
+
+        d.addEventListener('click',()=>{ idx=i; show(); });
+        dots.appendChild(d);
+      })
+    }
+    function show(){
+      list.forEach((el,i)=> el.style.display = i===idx ? 'block' : 'none');
+      document.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i===idx));
+    }
+    function next(){ idx = (idx+1) % list.length; show(); }
+    renderDots(); show(); let t = setInterval(next,4500);
+    document.getElementById('test-list').addEventListener('mouseenter',()=> clearInterval(t));
+    document.getElementById('test-list').addEventListener('mouseleave',()=> t = setInterval(next,4500));
+  })();
+</script>
+
+</body>
+</html>
