@@ -1,0 +1,35 @@
+{
+  "hero-cruise": {
+    "src": "assets/img/hero-cruise.jpg",
+    "title": "DSC94/Australia Queensland/Whitsunday Islands/Relax Deck on Whitsunday Magic Boat",
+    "creator": "dany13",
+    "creator_url": "https://www.flickr.com/photos/11493299@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/11493299@N00/5492019602",
+    "source": "flickr"
+  },
+  "virgin-cruise": {
+    "src": "assets/img/virgin-cruise.jpg",
+    "title": "Bathymetric mapping of the North Alfeo Fault (Ifremer 00655-76754)",
+    "creator": "Frauke Klingelhoefer / Marc-André Gutscher",
+    "creator_url": "https://www.wikidata.org/wiki/Q57049295",
+    "license": "by",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "foreign_landing_url": "https://commons.wikimedia.org/w/index.php?curid=160409637",
+    "source": "wikimedia"
+  },
+  "virgin-cruise": {
+    "src": "assets/img/virgin-cruise.jpg",
+    "title": "Seabourn Sojourn",
+    "creator": "Tips For Travellers",
+    "creator_url": "https://www.flickr.com/photos/8327374@N02",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/8327374@N02/15681179680",
+    "source": "flickr"
+  }
+}
